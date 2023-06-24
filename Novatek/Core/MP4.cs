@@ -3,6 +3,7 @@ using Novatek.Helpers;
 using System;
 using System.IO;
 using System.Linq;
+using EvilTransform;
 
 namespace Novatek.Core
 {
@@ -310,14 +311,17 @@ namespace Novatek.Core
                         // Kalman filter the GPS data to remove jumps
                         Kalman k = new Kalman(gps.Speed);
                         k.Process(flatitude, flongitude, 9.9f, 1000);
-                        gps.Latitude = k.get_lat();
-                        gps.Longitude = k.get_lng();
+                        Transform transformer = new Transform();
+                        PointLatLng wgs = transformer.WGS2GCJ(k.get_lat(), k.get_lng());
+                        gps.Latitude = wgs.Lat;
+                        gps.Longitude = wgs.Lng;
 
                         if (lastLat != 0 && lastLong != 0)
                         {
                             gps.Distance = GPSHelpers.Distance(lastLat, lastLong, flatitude, flongitude);
                             gps.Heading = GPSHelpers.Heading(lastLat, lastLong, flatitude, flongitude);
                         }
+
                         lastLat = gps.Latitude;
                         lastLong = gps.Longitude;
 

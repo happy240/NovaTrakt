@@ -24,7 +24,7 @@
         <m:Map x:Name="ntMap"
                CredentialsProvider="iQmb3gLgxu9xdmELC1ja~cijMCzvKYYV1X8O_PZ3eZw~AvNMPSVsdys8AXUE3oGx5byA-M3wJS8QcyyOU_0cMDJlSmTPzJMSFZBtbRycfUTV"
                Mode="{Binding DataContext.MapMode, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
-               ZoomLevel="2">
+               ZoomLevel="2" Culture="zh-CN">
             <!-- 
                 -->
             <m:MapPolyline Locations="{Binding SelectedTrip.GPSLocationsFiltered}"

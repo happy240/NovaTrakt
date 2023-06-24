@@ -20,7 +20,7 @@
                       TitleCharacterCasing="Normal" 
                       MinWidth="350" 
                       MinHeight="500" 
-                      WindowState="Maximized"
+                      WindowState="Normal"
                       WindowButtonCommandsOverlayBehavior="Never">
 
     <Window.Resources>
